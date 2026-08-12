@@ -10,8 +10,15 @@ from fastapi.responses import StreamingResponse
 app = FastAPI()
 
 
-model = joblib.load("house_model.joblib")
-features = joblib.load("house_features.joblib")
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+
+model_path = os.path.join(BASE_DIR, "house_model.joblib")
+features_path = os.path.join(BASE_DIR, "house_features.joblib")
+
+model = joblib.load(model_path)
+features = joblib.load(features_path)
 
 
 
