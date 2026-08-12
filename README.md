@@ -97,7 +97,7 @@ POST /predict
 
 ---
 
-## 🚀Deploy Backend to Render
+## Deploy Backend to Render
 
 ### Step 1 — Generate the Model File
 
@@ -121,7 +121,7 @@ git remote add origin https://github.com/YOUR_USERNAME/CL_house_price_prediction
 git push -u origin main
 ```
 
-> ⚠️ The `.gitignore` excludes `.joblib` files. You must either:
+>  The `.gitignore` excludes `.joblib` files. You must either:
 > - **Option A:** Remove `*.joblib` from `.gitignore` and use [Git LFS](https://git-lfs.github.com/) to push large files, **OR**
 > - **Option B:** Run `explore.py` as part of Render's build command (see below).
 
@@ -141,21 +141,6 @@ git push -u origin main
 
 > The build command installs dependencies **and** trains the model, so the `.joblib` files are generated on Render itself.
 
-4. Click **Create Web Service**
-
-Your API will be live at: `https://cl-house-price-prediction.onrender.com`
-
-
-
-## Host Frontend (Optional)
-
-The `frontend/` folder contains static HTML/CSS/JS files. You can host them using:
-
-- **GitHub Pages** — Push and enable Pages from Settings
-- **Netlify** — Drag & drop the `frontend/` folder
-- **Open locally** — Just open `frontend/index.html` in a browser
-
----
 
 ##  Run Locally
 
@@ -174,7 +159,7 @@ Open `frontend/index.html` in your browser.
 
 ---
 
-## 📊 Sample CSV Format
+##  Sample CSV Format
 
 Use this format for bulk predictions via `/predict-file`:
 
