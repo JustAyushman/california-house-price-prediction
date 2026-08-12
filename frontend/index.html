@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California House Price Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>California House Price Predictor</h2>
+        <p>Enter the details below to estimate the house price:</p>
+
+       
+        <input id="MedInc" placeholder="MedInc (e.g. 8.3 = higher income area)">
+        <input id="HouseAge" placeholder="HouseAge (e.g. 20 years)">
+        <input id="AveRooms" placeholder="AveRooms (e.g. 6 = avg rooms per house)">
+        <input id="AveBedrms" placeholder="AveBedrms (e.g. 1 = avg bedrooms)">
+        <input id="Population" placeholder="Population (e.g. 300 people in area)">
+        <input id="AveOccup" placeholder="AveOccup (e.g. 3 people per house)">
+        <input id="Latitude" placeholder="Latitude (e.g. 37.88)">
+        <input id="Longitude" placeholder="Longitude (e.g. -122.23)">
+
+        <button onclick="predict()">Predict</button>
+        <button onclick="window.location.href='upload.html'">Bulk-Prediction</button>
+        <button onclick="window.location.href='about.html'">About</button>
+
+        <h3 id="result"></h3>
+
+        <hr>
+
+       
+        <div class="info">
+
+            <h3>What do these inputs mean?</h3>
+            <ul>
+                <li><b>MedInc:</b> Average income in the area. Higher value = richer neighborhood.</li>
+                <li><b>HouseAge:</b> How old the houses are (in years).</li>
+                <li><b>AveRooms:</b> Average number of rooms per house.</li>
+                <li><b>AveBedrms:</b> Average number of bedrooms per house.</li>
+                <li><b>Population:</b> Number of people living in that area.</li>
+                <li><b>AveOccup:</b> Average number of people living in one house.</li>
+                <li><b>Latitude & Longitude:</b> Location of the area (map coordinates).</li>
+            </ul>
+
+            <h3>Important Notes</h3>
+            <ul>
+                <li>All values should be positive numbers.</li>
+                <li>Latitude should be between <b>32 and 42</b>.</li>
+                <li>Longitude should be between <b>-125 and -114</b>.</li>
+                <li>The prediction is an estimate, not an exact price.</li>
+                <li>Prices are calculated based on patterns in California housing data.</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <script>
+        const API_BASE_URL = "https://YOUR-RENDER-APP-NAME.onrender.com";
+
+        async function predict() {
+            const data = {
+                MedInc: parseFloat(document.getElementById("MedInc").value),
+                HouseAge: parseFloat(document.getElementById("HouseAge").value),
+                AveRooms: parseFloat(document.getElementById("AveRooms").value),
+                AveBedrms: parseFloat(document.getElementById("AveBedrms").value),
+                Population: parseFloat(document.getElementById("Population").value),
+                AveOccup: parseFloat(document.getElementById("AveOccup").value),
+                Latitude: parseFloat(document.getElementById("Latitude").value),
+                Longitude: parseFloat(document.getElementById("Longitude").value)
+            };
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/predict`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await res.json();
+                document.getElementById("result").innerText =
+                    "Estimated Price: " + result.predicted_price;
+
+            } catch (error) {
+                document.getElementById("result").innerText =
+                    "Error connecting to server!";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

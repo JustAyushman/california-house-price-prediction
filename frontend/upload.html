@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSV Prediction Upload</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Upload CSV File</h2>
+
+        <input type="file" id="fileInput" accept=".csv">
+
+        <button onclick="uploadFile()">Upload & Predict</button>
+        <button onclick="window.location.href='index.html'">Home</button>
+
+        <p id="status"></p>
+
+
+        <div class="info">
+
+            <h3>How to Use</h3>
+            <p>
+                Upload a CSV file with housing data to get predicted house prices.
+            </p>
+
+            <h3>Required Columns</h3>
+            <ul>
+                <li><b>MedInc:</b> Average income in the area</li>
+                <li><b>HouseAge:</b> Age of houses (in years)</li>
+                <li><b>AveRooms:</b> Average number of rooms per house</li>
+                <li><b>AveBedrms:</b> Average number of bedrooms</li>
+                <li><b>Population:</b> Total population in the area</li>
+                <li><b>AveOccup:</b> Average number of people per house</li>
+                <li><b>Latitude:</b> Location coordinate (32–42)</li>
+                <li><b>Longitude:</b> Location coordinate (-125 to -114)</li>
+            </ul>
+
+            <h3>Important Notes</h3>
+            <ul>
+                <li>Column names must match exactly (case-sensitive).</li>
+                <li>All values should be numeric.</li>
+                <li>The file must not be empty.</li>
+                <li>After upload, a new CSV with predicted prices will be downloaded.</li>
+            </ul>
+
+        </div>
+
+        <script>
+            const API_BASE_URL = "https://YOUR-RENDER-APP-NAME.onrender.com";
+
+            async function uploadFile() {
+                const fileInput = document.getElementById("fileInput");
+                const status = document.getElementById("status");
+
+                status.innerText = "";
+
+                if (!fileInput.files.length) {
+                    status.innerText = "Please select a file.";
+                    return;
+                }
+
+                const file = fileInput.files[0];
+
+                // Validate CSV
+                if (!file.name.endsWith(".csv")) {
+                    status.innerText = "Only CSV files are allowed.";
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append("file", file);
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/predict-file`, {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        const err = await response.json();
+                        status.innerText = err.detail || "Error occurred.";
+                        return;
+                    }
+
+                    // Handle file download
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "predictions.csv";
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+
+                    status.className = "success";
+                    status.innerText = "Download started...";
+                    setTimeout(() => {
+                        status.innerText = "";
+                    }, 3000);
+
+                } catch (error) {
+                    status.innerText = "Failed to connect to server.";
+                }
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>

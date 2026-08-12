@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>About This Project</h2>
+        <p>
+            This project predicts California house prices using a Machine Learning model
+            served through a FastAPI backend with an interactive frontend.
+        </p>
+
+        <button onclick="window.location.href='index.html'">Home</button>
+
+        <hr>
+
+       
+        <div class="info">
+            <h3>Dataset</h3>
+            <p>
+                The project uses the <b>California Housing Dataset</b>, which contains
+                <b>20,640 rows</b> of housing data collected from the 1990 census.
+            </p>
+
+            <h3>Features Used</h3>
+            <ul>
+                <li><b>MedInc:</b> Median income in the area</li>
+                <li><b>HouseAge:</b> Age of houses</li>
+                <li><b>AveRooms:</b> Average rooms per house</li>
+                <li><b>AveBedrms:</b> Average bedrooms</li>
+                <li><b>Population:</b> Area population</li>
+                <li><b>AveOccup:</b> People per household</li>
+                <li><b>Latitude & Longitude:</b> Location coordinates</li>
+            </ul>
+
+            <p>
+                The target variable is <b>MedHouseValue</b>, which represents house price
+                in units of $100,000.
+            </p>
+        </div>
+
+        <hr>
+
+     
+        <div class="info">
+            <h3>Machine Learning Model</h3>
+            <ul>
+                <li><b>Model:</b> Random Forest Regressor</li>
+                <li><b>Library:</b> Scikit-Learn</li>
+                <li><b>Problem Type:</b> Regression</li>
+            </ul>
+
+            <p>
+                The model predicts house prices based on patterns in income, housing
+                characteristics, and geographic location.
+            </p>
+
+            <p>
+                Average prediction error is approximately <b>$39,000</b>.
+            </p>
+        </div>
+
+        <hr>
+
+        
+        <div class="info">
+            <h3>Backend (FastAPI)</h3>
+            <ul>
+                <li>Framework: FastAPI</li>
+                <li>Model loaded using <b>joblib</b></li>
+                <li>Data processed using <b>Pandas</b></li>
+                <li>Input validation using <b>Pydantic</b></li>
+
+            </ul>
+
+            <h3>API Endpoints</h3>
+            <ul>
+                <li><b>/predict:</b> Predict price for single input</li>
+                <li><b>/predict-file:</b> Predict prices for CSV upload</li>
+                <li><b>/health:</b> Check API and model status</li>
+            </ul>
+        </div>
+
+        <hr>
+
+     
+        <div class="info">
+            <h3>Frontend</h3>
+            <ul>
+                <li>Built with HTML, CSS, JavaScript</li>
+                <li>Manual input prediction form</li>
+                <li>CSV upload for bulk prediction</li>
+                <li>Styled with a responsive glassmorphism UI</li>
+            </ul>
+        </div>
+
+        <hr>
+
+       
+        <div class="info">
+            <h3>How It Works</h3>
+            <ul>
+                <li>1. User enters data or uploads CSV</li>
+                <li>2. Data is sent to FastAPI backend</li>
+                <li>3. Backend validates and processes input</li>
+                <li>4. Model predicts house prices</li>
+                <li>5. Results returned as JSON or CSV</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        
+        <div class="info">
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>Python</li>
+                <li>FastAPI</li>
+                <li>Scikit-Learn</li>
+                <li>Pandas</li>
+                <li>Joblib</li>
+                <li>HTML, CSS, JavaScript</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

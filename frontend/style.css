@@ -1,0 +1,347 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+  min-height: 100vh;
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+              url("https://images.pexels.com/photos/23368595/pexels-photo-23368595.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 420px;   
+  
+  margin: 0 auto;     
+  
+  padding: 25px;
+  border-radius: 12px;
+
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.1);
+}
+
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  color: whitesmoke
+}
+
+.container p {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+
+  border-radius: 6px;
+  border: 1px solid #444;
+  outline: none;
+
+  background: #111;
+  color: #fff;
+
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: linear-gradient(90deg, #fff, #ccc);
+  color: #000;
+  font-weight: bold;
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+
+
+button:hover {
+  transform: scale(1.03);
+  background: #fff;
+}
+
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(8, 7, 7);
+  margin-bottom: 25px;
+  background-color: #8cd28c ;
+  border-radius: 6px;
+  
+}
+
+
+.info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.info h3 {
+  margin-top: 15px;
+}
+
+.info ul {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.info li {
+  margin-bottom: 6px;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .container h2 {
+    font-size: 22px;
+  }
+
+  input {
+    padding: 9px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 11px;
+    font-size: 14px;
+  }
+
+  #result {
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+    align-items: flex-start; 
+  }
+
+  .container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .container h2 {
+    font-size: 20px;
+  }
+
+  .container p {
+    font-size: 13px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  #result {
+    font-size: 18px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 500px;
+    padding: 35px;
+  }
+
+  .container h2 {
+    font-size: 26px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+
+  #result {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .container {
+    padding: 15px;
+  }
+
+  .container h2 {
+    font-size: 18px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+  }
+
+  #result {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+
+input[type="file"] {
+    padding: 8px;
+    background: #111;
+    color: #ccc;
+    border: 1px solid #444;
+}
+
+
+#status {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+#status.success {
+    color: #4CAF50;
+}
+
+#status.error {
+    color: #ff4d4d;
+}
+
+
+
+.container button {
+    margin-top: 10px;
+}
+
+
+.container hr {
+    margin: 20px 0;
+    border: 0;
+    height: 1px;
+    background: #444;
+}
+
+
+.info p {
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+
+.info b {
+    color: #fff;
+}
